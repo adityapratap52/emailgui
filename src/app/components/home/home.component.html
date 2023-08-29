@@ -1,0 +1,9 @@
+<div class="container">
+    <h2>Welcome to Email Sender App...</h2>
+    <p>Send mail to anyone</p>
+
+    <!-- if we use href then page will be reload but we build single page application
+    which will not reload -->
+    <!-- <a href="/sendemail" mat-raised-button color="accent" (click)="sendMail()">Send Mail</a> -->
+    <a routerLink="/sendemail" mat-raised-button color="accent" (click)="sendMail()">Send Mail</a>
+</div>
