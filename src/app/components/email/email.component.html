@@ -11,15 +11,23 @@
                 <input [(ngModel)]="data.to" name="to" id="to" matInput>
             </mat-form-field>
             <mat-form-field class="input-field" appearance="outline">
-                <mat-label>Textarea</mat-label>
-                <textarea [(ngModel)]="data.message" name="message" id="message" rows="10" matInput placeholder="type your message..."></textarea>
+                <mat-label>Subject</mat-label>
+                <input [(ngModel)]="data.subject" name="subject" id="subject" matInput>
             </mat-form-field>
-            
+            <mat-form-field class="input-field" appearance="outline">
+                <mat-label>Message</mat-label>
+                <textarea [(ngModel)]="data.message" name="message" id="message" rows="10" matInput
+                    placeholder="type your message..."></textarea>
+            </mat-form-field>
+
+            <mat-spinner class="spinner" color="primary" *ngIf="flag"></mat-spinner>
             <div class="text-center">
-                <button type="submit" mat-raised-button color="primary">Send Email</button>
-                <button type="reset" mat-raised-button color="primary">Reset</button>
+                <button type="submit" [disabled]="flag" mat-raised-button color="primary">Send Email</button>
+                <button type="reset" [disabled]="flag"  mat-raised-button color="accent">Reset</button>
             </div>
         </form>
-        {{data | json}}
+
+        <!-- this is use to print data on frontend into runtime -->
+        <!-- {{data | json}} -->
     </div>
 </div>

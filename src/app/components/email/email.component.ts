@@ -9,19 +9,21 @@ import { EmailService } from 'src/app/services/email.service';
 })
 export class EmailComponent implements OnInit {
 
-        // first way
+  // first way
   // from !: string
   // to !: string
   // message !: string;
 
-        // second way
+  // second way
   data = {
-    from : "",
-    to : "",
-    message : ""
+    from: "",
+    to: "",
+    subject: "",
+    message: ""
   }
 
-  constructor(private email : EmailService, private snackBar : MatSnackBar) { }
+  flag= false;
+  constructor(private email: EmailService, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
   }
@@ -34,16 +36,20 @@ export class EmailComponent implements OnInit {
     // }
 
     console.log("email content is: " + JSON.stringify(this.data));
-    if(this.data.from.trim()=='' || this.data.to.trim()=='' || this.data.message.trim()=='') {
+    if (this.data.from.trim() == '' || this.data.to.trim() == '' || this.data.from.trim() == '' || this.data.message.trim() == '') {
       this.snackBar.open("any field can't be empty!!!", "OK");
       return;
     }
+    this.flag=true;
     this.email.sendEmail(this.data).subscribe(
-      response=>{
-        console.log(response);
+      response => {
+        this.flag=false;
+        this.snackBar.open("send success!", "OK");
       },
-      error=>{
+      error => {
         console.log(error);
+        this.flag=false;
+        this.snackBar.open("something went wrong!", "OK");
       }
     );
   }
