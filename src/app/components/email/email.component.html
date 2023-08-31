@@ -1,5 +1,8 @@
 <div class="container">
     <div class="card">
+        <div style="margin: auto; width:9%">
+            <img style="width: 78px;" src="assets/images/mail.png" alt="">
+        </div>
         <h2 class="text-center">Compose Email...</h2>
         <form (ngSubmit)="submitEmailForm()">
             <mat-form-field class="input-field" appearance="outline">
@@ -23,10 +26,10 @@
             <mat-spinner class="spinner" color="primary" *ngIf="flag"></mat-spinner>
             <div class="text-center">
                 <button type="submit" [disabled]="flag" mat-raised-button color="primary">Send Email</button>
-                <button type="reset" [disabled]="flag"  mat-raised-button color="accent">Reset</button>
+                <button type="reset" [disabled]="flag" mat-raised-button color="accent">Reset</button>
             </div>
         </form>
-
+        <a routerLink="/" mat-button color="warn">Back</a>
         <!-- this is use to print data on frontend into runtime -->
         <!-- {{data | json}} -->
     </div>
